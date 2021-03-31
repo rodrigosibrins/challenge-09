@@ -9,18 +9,26 @@
         <title>Login</title>
     </head>
     <body>
-        <section id="login">
+        <section id="form-section">
+            <h1>Login</h1>
             <div class="form-container">
                 <form action="#">
                     <label for="email">Email</label>
                     <input type="email" name="user-email" id="email" value="" required>
                     <label for="password">Password</label>
                     <input type="password" name="user-password" id="password" value="" required>
-                    <a href="register.html">Don't Have an Account?</a>
-                    <input type="button" value="Login">
+                    <div class="btn-container">
+                        <input type="button" value="Login">
+                        <a href="register.html">Create Account</a>
+                    </div>
                 </form>
             </div>
-            <div class="test-container"></div>
+            <div class="test-container">
+                <h2>Validations Results:</h2>
+                <ol>
+                    <li>Every validation has passed!</li>
+                </ol>
+            </div>
         </section>
         <script src="js/login.js"></script>
     </body>

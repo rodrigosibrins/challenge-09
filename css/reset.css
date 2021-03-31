@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: unset;
+}
+h1,
+label,
+a{
+    font-size: 0;
+}
+input{
+    outline: none;
+}
