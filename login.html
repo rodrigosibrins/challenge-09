@@ -14,20 +14,20 @@
             <div class="form-container">
                 <form action="#">
                     <label for="email">Email</label>
-                    <input type="email" name="user-email" id="email" value="" required>
+                    <input type="email" name="user-email" id="email" value="" placeholder="e.g.: mail@gmail.com" required>
                     <label for="password">Password</label>
-                    <input type="password" name="user-password" id="password" value="" required>
+                    <input type="password" name="user-password" id="password" value="" placeholder="e.g.: M001lo21XyZ " required>
                     <div class="btn-container">
                         <input type="button" value="Login">
                         <a href="register.html">Create Account</a>
                     </div>
                 </form>
             </div>
-            <div class="test-container">
+            <div id="test" class="test-container">
                 <h2>Validations Results:</h2>
-                <ol>
+                <ul id="validations">
                     <li>Every validation has passed!</li>
-                </ol>
+                </ul>
             </div>
         </section>
         <script src="js/login.js"></script>

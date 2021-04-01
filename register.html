@@ -14,13 +14,13 @@
             <div class="form-container">
                 <form action="#">
                     <label for="name">Full Name</label>
-                    <input type="text" name="user-name" id="name" value="" required>
+                    <input type="text" name="user-name" id="name" value="" placeholder="e.g.: Rodrigo Sibrins" required>
                     <label for="email">Email</label>
-                    <input type="email" name="user-email" id="email" value="" required>
+                    <input type="email" name="user-email" id="email" value="" placeholder="e.g.: mail@gmail.com" required>
                     <label for="password">Password</label>
-                    <input type="password" name="user-password" id="password" value="" required>
+                    <input type="password" name="user-password" id="password" value="" placeholder="e.g.: M001lo21XyZ" required>
                     <label for="password">Confirm Password</label>
-                    <input type="password" name="user-password" id="password" value="" required>
+                    <input type="password" name="user-password" id="confirm-password" value="" placeholder="e.g.: M001lo21XyZ" required>
                     <div class="btn-container">
                         <input type="submit" value="Register">
                         <input type="reset" value="Reset">
@@ -30,11 +30,10 @@
             <div class="link">
                 <a href="login.html">Login</a>
             </div>
-            <div class="test-container">
+            <div id="test" class="test-container">
                 <h2>Validations Results:</h2>
-                <ol>
-                    <li>Every validation has passed!</li>
-                </ol>
+                <ul id="validations">
+                </ul>
             </div>
         </section>
         <script src="js/register.js"></script>
