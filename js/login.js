@@ -26,5 +26,6 @@ function inputsRightAmount(){
     }
 }
 
+
 formExist();
 inputsRightAmount();
