@@ -3,7 +3,6 @@ let textValidations = document.getElementById('validations');
 let form = document.querySelector('form');
 function formExist(){
     if(document.forms = true){
-        console.log("Validation Passed!");
         return true;
     }else{
         const liForm = `<li>Form element doesn't exist</li>`
@@ -15,7 +14,6 @@ function formExist(){
 
 function inputsRightAmount(){
     if(form.elements['email'] && form.elements['password']){
-        console.log("Validation Passed!")
         return true;
     }else{
         const liMissingInp = `<li>Missing Input</li>`;
@@ -35,7 +33,6 @@ function inputsAreRequired(){
     if(
        inpEmail.hasAttribute('required') && labEmail == 'email' &&
        inpPassword.hasAttribute('required') && labPassword == 'password'){
-        console.log("Validation Passed!");
         return true;
        }else{
         const liNotRequired = `<li>Inputs specifications not met</li>`;
@@ -48,7 +45,6 @@ function inputsAreRequired(){
 function btnCheck(){
     let btnLogin = document.getElementById('login-btn').value;
     if(btnLogin == 'Login'){
-        console.log("Validation Passed!");
         return true;
     }else{
         const liBtn = `<li>Wrong value for the button</li>`;
@@ -58,7 +54,19 @@ function btnCheck(){
     }
 }
 
+function validationsPassed(){
+    if(formExist() == true && inputsRightAmount() == true && inputsAreRequired() == true && 
+       btnCheck() == true){
+        const liPassed = `<li>All Validations Passed!</li>`;
+        testScreen.style.display = 'flex';
+        textValidations.innerHTML += liPassed;
+       } else{
+           console.log("Something went wrong :(");
+       }
+}
+
 formExist();
 inputsRightAmount();
 inputsAreRequired();
 btnCheck();
+validationsPassed();

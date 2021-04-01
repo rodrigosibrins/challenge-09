@@ -4,7 +4,6 @@ let form = document.querySelector('form');
 
 function formExist(){
     if(document.forms = true){
-        console.log("Validation Passed!");
         return true;
     }else{
         const liForm = `<li>Form element doesn't exist</li>`;
@@ -17,7 +16,6 @@ function formExist(){
 function inputsRightAmount(){
     if(form.elements['name'] && form.elements['email'] && form.elements['password'] &&
        form.elements['confirm-password']){
-        console.log("Validation Passed!")
         return true;
     }else{
         const liMissingInp = `<li>Missing Input</li>`;
@@ -41,7 +39,6 @@ function inputsAreRequired(){
        inpEmail.hasAttribute('required') && labEmail == 'email' &&
        inpPassword.hasAttribute('required') && labPassword == 'password' &&
        inpConfirmPass.hasAttribute('required') && labConfirmPass == 'confirm-password'){
-        console.log("Validation Passed!");
         return true;
        }else{
         const liNotRequired = `<li>Inputs specifications not met</li>`;
@@ -54,7 +51,6 @@ function inputsAreRequired(){
 function anchorRight(){
     let anchorHref = document.getElementById('anchor').href;
     if(anchorHref == 'http://127.0.0.1:5500/login.html'){
-        console.log("Validation Passed!");
         return true;
     }else{
         const liWrongHref = `<li>Wrong Href</li>`;
@@ -68,7 +64,6 @@ function btnCheck(){
     let btnSubmit = document.getElementById('submit-btn').value;
     let btnReset = document.getElementById('reset-btn').value;
     if(btnSubmit == 'Register' && btnReset == 'Reset'){
-        console.log("Validation Passed!");
         return true;
     }else{
         const liBtn = `<li>Wrong values for the buttons</li>`;
@@ -78,8 +73,18 @@ function btnCheck(){
     }
 }
 
+function validationsPassed(){
+    if(formExist() == true && inputsRightAmount() == true && inputsAreRequired() == true &&
+       anchorRight() == true && btnCheck() == true){
+        const liPassed = `<li>All Validations Passed!</li>`;
+        testScreen.style.display = 'flex';
+        textValidations.innerHTML += liPassed;
+       }
+}
+
 formExist();
 inputsRightAmount();
 inputsAreRequired();
 anchorRight();
 btnCheck();
+validationsPassed();
