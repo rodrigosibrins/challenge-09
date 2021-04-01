@@ -26,6 +26,25 @@ function inputsRightAmount(){
     }
 }
 
+function inputsAreRequired(){
+    let inpEmail = form.elements[0];
+    let inpPassword = form.elements[1];
+    let labEmail = document.getElementById('lab-email').getAttribute('for');
+    let labPassword = document.getElementById('lab-password').getAttribute('for');
+   
+    if(
+       inpEmail.hasAttribute('required') && labEmail == 'email' &&
+       inpPassword.hasAttribute('required') && labPassword == 'password'){
+        console.log("Validation Passed!");
+        return true;
+       }else{
+        const liNotRequired = `<li>Inputs specifications not met</li>`;
+        testScreen.style.display = 'flex';
+        testScreen.style.border = '2px solid red';
+        textValidations.innerHTML += liNotRequired;
+       }
+}
+
 function btnCheck(){
     let btnLogin = document.getElementById('login-btn').value;
     if(btnLogin == 'Login'){
@@ -41,4 +60,5 @@ function btnCheck(){
 
 formExist();
 inputsRightAmount();
+inputsAreRequired();
 btnCheck();

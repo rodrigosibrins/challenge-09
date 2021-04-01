@@ -32,14 +32,22 @@ function inputsAreRequired(){
     let inpEmail = form.elements[1];
     let inpPassword = form.elements[2];
     let inpConfirmPass = form.elements[3];
-
-
-    if(inpName.hasAttribute('required') && inpEmail.hasAttribute('required') &&
-       inpPassword.hasAttribute('required') && inpConfirmPass.hasAttribute('required')){
+    let labName = document.getElementById('lab-name').getAttribute('for');
+    let labEmail = document.getElementById('lab-email').getAttribute('for');
+    let labPassword = document.getElementById('lab-password').getAttribute('for');
+    let labConfirmPass = document.getElementById('lab-confirm').getAttribute('for');
+   
+    if(inpName.hasAttribute('required') && labName == 'name' &&
+       inpEmail.hasAttribute('required') && labEmail == 'email' &&
+       inpPassword.hasAttribute('required') && labPassword == 'password' &&
+       inpConfirmPass.hasAttribute('required') && labConfirmPass == 'confirm-password'){
         console.log("Validation Passed!");
         return true;
        }else{
-        console.log("la batiste")
+        const liNotRequired = `<li>Inputs specifications not met</li>`;
+        testScreen.style.display = 'flex';
+        testScreen.style.border = '2px solid red';
+        textValidations.innerHTML += liNotRequired;
        }
 }
 
