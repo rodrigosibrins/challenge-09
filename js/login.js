@@ -26,6 +26,19 @@ function inputsRightAmount(){
     }
 }
 
+function btnCheck(){
+    let btnLogin = document.getElementById('login-btn').value;
+    if(btnLogin == 'Login'){
+        console.log("Validation Passed!");
+        return true;
+    }else{
+        const liBtn = `<li>Wrong value for the button</li>`;
+        testScreen.style.display = 'flex';
+        testScreen.style.border = '2px solid red';
+        textValidations.innerHTML += liBtn;
+    }
+}
 
 formExist();
 inputsRightAmount();
+btnCheck();

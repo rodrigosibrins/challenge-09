@@ -33,6 +33,7 @@ function inputsAreRequired(){
     let inpPassword = form.elements[2];
     let inpConfirmPass = form.elements[3];
 
+
     if(inpName.hasAttribute('required') && inpEmail.hasAttribute('required') &&
        inpPassword.hasAttribute('required') && inpConfirmPass.hasAttribute('required')){
         console.log("Validation Passed!");
@@ -45,7 +46,7 @@ function inputsAreRequired(){
 function anchorRight(){
     let anchorHref = document.getElementById('anchor').href;
     if(anchorHref == 'http://127.0.0.1:5500/login.html'){
-        console.log("Validation Passed");
+        console.log("Validation Passed!");
         return true;
     }else{
         const liWrongHref = `<li>Wrong Href</li>`;
@@ -55,8 +56,22 @@ function anchorRight(){
     }
 }
 
+function btnCheck(){
+    let btnSubmit = document.getElementById('submit-btn').value;
+    let btnReset = document.getElementById('reset-btn').value;
+    if(btnSubmit == 'Register' && btnReset == 'Reset'){
+        console.log("Validation Passed!");
+        return true;
+    }else{
+        const liBtn = `<li>Wrong values for the buttons</li>`;
+        testScreen.style.display = 'flex';
+        testScreen.style.border = '2px solid red';
+        textValidations.innerHTML += liBtn;
+    }
+}
 
 formExist();
 inputsRightAmount();
 inputsAreRequired();
 anchorRight();
+btnCheck();
