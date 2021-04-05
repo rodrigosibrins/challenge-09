@@ -99,4 +99,7 @@ input:focus::placeholder{
     font-size: 22px;
     color: #364547;
 }
+#validations{
+    width: 200px;
+}
 
