@@ -12,7 +12,7 @@ function styleChanges(){
 }
 function nameValidation() {
   if (nameInp.value === "" || nameInp.value == null) {
-    let liName = `<li>Name input is empty</li>`;
+    const liName = `<li>Name input is empty</li>`;
     styleChanges();
     nameInp.style.border = "2px solid crimson";
     textValidations.innerHTML = liName;
@@ -26,7 +26,9 @@ function emailValidation() {
     const liEmail = `<li>Not valid email</li>`;
     styleChanges();
     emailInp.style.border = "2px solid crimson";
-    textValidations.innerHTML += liEmail;
+    if(textValidations.innerHTML != liEmail){
+      textValidations.innerHTML += liEmail;
+    }
   } else if (emailInp.value.match(pattern)) {
     return true;
   }
@@ -36,7 +38,9 @@ function passwordValidation() {
     const liPass = `<li>Password must have at least 8 characters</li>`;
     styleChanges();
     passInp.style.border = "2px solid crimson";
-    textValidations.innerHTML += liPass;
+    if(textValidations.innerHTML != liPass){
+      textValidations.innerHTML += liPass;
+    }
   } else {
     return true;
   }
@@ -46,19 +50,23 @@ function confirmValidation() {
     const liConfirm = `<li>The confirm password is wrong!</li>`;
     styleChanges();
     confirmInp.style.border = "2px solid crimson";
-    textValidations.innerHTML += liConfirm;
+    if(textValidations.innerHTML != liConfirm){
+      textValidations.innerHTML += liConfirm;
+    }
     return false;
   } else {
     return true;
   }
 }
 function formExist() {
-  if ((document.forms = true)) {
+  if (document.forms = true) {
     return true;
   } else {
     const liForm = `<li>Form element doesn't exist</li>`;
     styleChanges();
-    textValidations.innerHTML += liForm;
+      if(textValidations.innerHTML != liForm){
+        textValidations.innerHTML += liForm;
+    }
   }
 }
 function inputsRightAmount() {
@@ -72,7 +80,9 @@ function inputsRightAmount() {
   } else {
     const liMissingInp = `<li>Missing Input</li>`;
     styleChanges();
-    textValidations.innerHTML += liMissingInp;
+      if(textValidations.innerHTML != liMissingInp){
+        textValidations.innerHTML += liMissingInp;
+    }
   }
 }
 function inputsAreRequired() {
@@ -86,7 +96,6 @@ function inputsAreRequired() {
   let labConfirmPass = document
     .getElementById("lab-confirm")
     .getAttribute("for");
-
   if (
     inpName.hasAttribute("required") &&
     labName == "name" &&
@@ -101,7 +110,9 @@ function inputsAreRequired() {
   } else {
     const liNotRequired = `<li>Inputs specifications not met</li>`;
     styleChanges();
-    textValidations.innerHTML += liNotRequired;
+      if(textValidations.innerHTML != liNotRequired){
+        textValidations.innerHTML += liNotRequired;
+      }
   }
 }
 function anchorRight() {
@@ -111,7 +122,9 @@ function anchorRight() {
   } else {
     const liWrongHref = `<li>Wrong Href</li>`;
     styleChanges();
-    textValidations.innerHTML += liWrongHref;
+      if(textValidations.innerHTML != liWrongHref){
+        textValidations.innerHTML += liWrongHref;
+      }
   }
 }
 function btnCheck() {
@@ -122,7 +135,9 @@ function btnCheck() {
   } else {
     const liBtn = `<li>Wrong values for the buttons</li>`;
     styleChanges();
-    textValidations.innerHTML += liBtn;
+      if(textValidations.innerHTML != liBtn){
+        textValidations.innerHTML += liBtn;
+      }
   }
 }
 function validationsPassed(){
@@ -139,11 +154,21 @@ function validationsPassed(){
   ) {
     const liPassed = `<li>Every Validation has Passed!</li>`;
     testScreen.style.display = "flex";
-    testScreen.style.border = "2px solid green";
+    testScreen.style.border = "2px solid springgreen";
+    nameInp.style.border = "2px solid springgreen";
+    emailInp.style.border = "2px solid springgreen";
+    passInp.style.border = "2px solid springgreen";
+    confirmInp.style.border = "2px solid springgreen";
     textValidations.innerHTML = liPassed;
   } 
 }
+function clean(){
+  if(testScreen.style.display = "flex");
+    textValidations.innerHTML = "";
+    testScreen.style.border = "2px solid";
+}
 function validateAll(){
+  clean();
   validationsPassed();
   nameValidation();
   emailValidation();

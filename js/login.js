@@ -16,9 +16,11 @@ function emailValidation() {
     const liEmail = `<li>Not valid email</li>`;
     styleChanges();
     emailInp.style.border = "2px solid crimson";
-    textValidations.innerHTML = liEmail;
+    if(textValidations.innerHTML != liEmail){
+      textValidations.innerHTML += liEmail;
+    }
   } else if (emailInp.value.match(pattern)) {
-      return true;
+    return true;
   }
 }
 function passwordValidation() {
@@ -26,9 +28,11 @@ function passwordValidation() {
     const liPass = `<li>Password must have at least 8 characters</li>`;
     styleChanges();
     passInp.style.border = "2px solid crimson";
-    textValidations.innerHTML += liPass;
+    if(textValidations.innerHTML != liPass){
+      textValidations.innerHTML += liPass;
+    }
   } else {
-      return true;
+    return true;
   }
 }
 function formExist() {
@@ -86,22 +90,28 @@ function validationsPassed(){
     formExist() == true &&
     inputsRightAmount() == true &&
     inputsAreRequired() == true &&
-    anchorRight() == true &&
     btnCheck() == true
   ) {
     const liPassed = `<li>Every Validation has Passed!</li>`;
     testScreen.style.display = "flex";
-    testScreen.style.border = "2px solid green";
+    testScreen.style.border = "2px solid springgreen";
+    emailInp.style.border = "2px solid springgreen";
+    passInp.style.border = "2px solid springgreen";
     textValidations.innerHTML = liPassed;
   } 
 }
+function clean(){
+  if(testScreen.style.display = "flex");
+    textValidations.innerHTML = "";
+    testScreen.style.border = "2px solid";
+}
 function validateAll(){
+  clean();
   validationsPassed();
   emailValidation();
   passwordValidation();
   formExist();
   inputsRightAmount();
   inputsAreRequired();
-  anchorRight();
   btnCheck();
 }
