@@ -13,16 +13,20 @@ function styleChanges() {
 function emailValidation() {
   let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   if (emailInp.value === "") {
-      return false;
+    const liEmail = `<li>Not valid email</li>`;
+    styleChanges();
+    emailInp.style.border = "2px solid crimson";
+    textValidations.innerHTML = liEmail;
   } else if (emailInp.value.match(pattern)) {
       return true;
   }
 }
 function passwordValidation() {
-  if (passInp.value.length < 8) {
-      return false;
-  } else if (passInp.value.length >= 20) {
-      return false;
+  if (passInp.value.length < 8 || passInp.value.length >= 20) {
+    const liPass = `<li>Password must have at least 8 characters</li>`;
+    styleChanges();
+    passInp.style.border = "2px solid crimson";
+    textValidations.innerHTML += liPass;
   } else {
       return true;
   }
@@ -75,34 +79,29 @@ function btnCheck() {
       textValidations.innerHTML += liBtn;
   }
 }
-loginBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+function validationsPassed(){
   if (
     emailValidation() == true &&
     passwordValidation() == true &&
     formExist() == true &&
     inputsRightAmount() == true &&
     inputsAreRequired() == true &&
+    anchorRight() == true &&
     btnCheck() == true
   ) {
-      const liPassed = `<li>Every Validation has Passed!</li>`;
-      testScreen.style.display = "flex";
-      textValidations.innerHTML += liPassed;
-  }
-  if (emailValidation() == false) {
-      const liEmail = `<li>Not valid email</li>`;
-      styleChanges();
-      emailInp.style.border = "2px solid crimson";
-      textValidations.innerHTML += liEmail;
-  }
-  if (passwordValidation() == false) {
-      const liPass = `<li>Password must have at least 8 characters</li>`;
-      styleChanges();
-      passInp.style.border = "2px solid crimson";
-      textValidations.innerHTML += liPass;
-  }
+    const liPassed = `<li>Every Validation has Passed!</li>`;
+    testScreen.style.display = "flex";
+    testScreen.style.border = "2px solid green";
+    textValidations.innerHTML = liPassed;
+  } 
+}
+function validateAll(){
+  validationsPassed();
+  emailValidation();
+  passwordValidation();
   formExist();
   inputsRightAmount();
   inputsAreRequired();
+  anchorRight();
   btnCheck();
-});
+}

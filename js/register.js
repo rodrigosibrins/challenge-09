@@ -12,36 +12,43 @@ function styleChanges(){
 }
 function nameValidation() {
   if (nameInp.value === "" || nameInp.value == null) {
-    return false;
+    let liName = `<li>Name input is empty</li>`;
+    styleChanges();
+    nameInp.style.border = "2px solid crimson";
+    textValidations.innerHTML = liName;
   } else {
-    return true;
+      return true;
   }
 }
 function emailValidation() {
   let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   if (emailInp.value === "") {
-    return false;
+    const liEmail = `<li>Not valid email</li>`;
+    styleChanges();
+    emailInp.style.border = "2px solid crimson";
+    textValidations.innerHTML += liEmail;
   } else if (emailInp.value.match(pattern)) {
     return true;
   }
 }
 function passwordValidation() {
-  if (passInp.value.length < 8) {
-    return false;
-  } else if (passInp.value.length >= 20) {
-    return false;
+  if (passInp.value.length < 8 || passInp.value.length >= 20) {
+    const liPass = `<li>Password must have at least 8 characters</li>`;
+    styleChanges();
+    passInp.style.border = "2px solid crimson";
+    textValidations.innerHTML += liPass;
   } else {
     return true;
   }
 }
 function confirmValidation() {
-  if (confirmInp.value != passInp.value) {
-    console.log("es otra contrasena");
+  if (confirmInp.value != passInp.value || confirmInp.value === '') {
+    const liConfirm = `<li>The confirm password is wrong!</li>`;
+    styleChanges();
+    confirmInp.style.border = "2px solid crimson";
+    textValidations.innerHTML += liConfirm;
     return false;
-  }else if(confirmInp.value === ''){
-      return false;
-  }
-   else {
+  } else {
     return true;
   }
 }
@@ -118,8 +125,7 @@ function btnCheck() {
     textValidations.innerHTML += liBtn;
   }
 }
-registerBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+function validationsPassed(){
   if (
     nameValidation() == true &&
     emailValidation() == true &&
@@ -133,36 +139,21 @@ registerBtn.addEventListener("click", (e) => {
   ) {
     const liPassed = `<li>Every Validation has Passed!</li>`;
     testScreen.style.display = "flex";
-    textValidations.innerHTML += liPassed;
+    testScreen.style.border = "2px solid green";
+    textValidations.innerHTML = liPassed;
   } 
-  if (nameValidation() == false) {
-      const liName = `<li>Name input is empty</li>`;
-      styleChanges();
-      nameInp.style.border = "2px solid crimson";
-      textValidations.innerHTML += liName;
-    }
-  if (emailValidation() == false) {
-      const liEmail = `<li>Not valid email</li>`;
-      styleChanges();
-      emailInp.style.border = "2px solid crimson";
-      textValidations.innerHTML += liEmail;
-    }
-  if (passwordValidation() == false) {
-        const liPass = `<li>Password must have at least 8 characters</li>`;
-        styleChanges();
-        passInp.style.border = "2px solid crimson";
-        textValidations.innerHTML += liPass;
-    }
-  if (confirmValidation() == false) {
-        const liConfirm = `<li>The confirm password is wrong!</li>`;
-        styleChanges();
-        confirmInp.style.border = "2px solid crimson";
-        textValidations.innerHTML += liConfirm;
-    }
+}
+function validateAll(){
+  validationsPassed();
+  nameValidation();
+  emailValidation();
+  passwordValidation();
+  confirmValidation();
   formExist();
   inputsRightAmount();
   inputsAreRequired();
   anchorRight();
   btnCheck();
-});
+}
+
 
