@@ -6,39 +6,54 @@ let nameInp = document.getElementById("name");
 let emailInp = document.getElementById("email");
 let passInp = document.getElementById("password");
 let confirmInp = document.getElementById("confirm-password");
-function styleChanges(){
-    testScreen.style.display = "flex";
-    testScreen.style.border = "2px solid crimson";
+function styleChanges() {
+  testScreen.style.display = "flex";
+  testScreen.style.border = "2px solid crimson";
 }
 function nameValidation() {
-  if (nameInp.value === "" || nameInp.value == null) {
+  if (nameInp == null) {
+    styleChanges();
+    textValidations.innerHTML = `<li>Name input is missing</li>`;
+  } else if (nameInp.value === "" || nameInp.value === null) {
     const liName = `<li>Name input is empty</li>`;
     styleChanges();
     nameInp.style.border = "2px solid crimson";
     textValidations.innerHTML = liName;
   } else {
-      return true;
+    return true;
   }
 }
 function emailValidation() {
   let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (emailInp.value === "") {
+  if (emailInp == null) {
+    const liEmailNull = `<li>Email input is missing</li>`;
+    styleChanges();
+    if (textValidations.innerHTML != liEmailNull) {
+      textValidations.innerHTML += liEmailNull;
+    }
+  } else if (emailInp == null || emailInp.value === "") {
     const liEmail = `<li>Not valid email</li>`;
     styleChanges();
     emailInp.style.border = "2px solid crimson";
-    if(textValidations.innerHTML != liEmail){
+    if (textValidations.innerHTML != liEmail) {
       textValidations.innerHTML += liEmail;
+    } else if (emailInp.value.match(pattern)) {
+      return true;
     }
-  } else if (emailInp.value.match(pattern)) {
-    return true;
   }
 }
 function passwordValidation() {
-  if (passInp.value.length < 8 || passInp.value.length >= 20) {
+  if (passInp == null) {
+    const liPassNull = `<li>Password input is missing</li>`;
+    styleChanges();
+    if (textValidations.innerHTML != liPassNull) {
+      textValidations.innerHTML += liPassNull;
+    }
+  } else if (passInp.value.length < 8 || passInp.value.length >= 20) {
     const liPass = `<li>Password must have at least 8 characters</li>`;
     styleChanges();
     passInp.style.border = "2px solid crimson";
-    if(textValidations.innerHTML != liPass){
+    if (textValidations.innerHTML != liPass) {
       textValidations.innerHTML += liPass;
     }
   } else {
@@ -46,42 +61,31 @@ function passwordValidation() {
   }
 }
 function confirmValidation() {
-  if (confirmInp.value != passInp.value || confirmInp.value === '') {
+  if (confirmInp == null) {
+    const liConfirmNull = `<li>Confirm Password input is missing</li>`;
+    styleChanges();
+    if (textValidations.innerHTML != liConfirmNull) {
+      textValidations.innerHTML += liConfirmNull;
+    }
+  } else if (confirmInp.value != passInp.value || confirmInp.value === "") {
     const liConfirm = `<li>The confirm password is wrong!</li>`;
     styleChanges();
     confirmInp.style.border = "2px solid crimson";
-    if(textValidations.innerHTML != liConfirm){
+    if (textValidations.innerHTML != liConfirm) {
       textValidations.innerHTML += liConfirm;
     }
-    return false;
   } else {
     return true;
   }
 }
 function formExist() {
-  if (document.forms = true) {
+  if (form !== null) {
     return true;
   } else {
     const liForm = `<li>Form element doesn't exist</li>`;
     styleChanges();
-      if(textValidations.innerHTML != liForm){
-        textValidations.innerHTML += liForm;
-    }
-  }
-}
-function inputsRightAmount() {
-  if (
-    form.elements["name"] &&
-    form.elements["email"] &&
-    form.elements["password"] &&
-    form.elements["confirm-password"]
-  ) {
-    return true;
-  } else {
-    const liMissingInp = `<li>Missing Input</li>`;
-    styleChanges();
-      if(textValidations.innerHTML != liMissingInp){
-        textValidations.innerHTML += liMissingInp;
+    if (textValidations.innerHTML != liForm) {
+      textValidations.innerHTML += liForm;
     }
   }
 }
@@ -108,11 +112,11 @@ function inputsAreRequired() {
   ) {
     return true;
   } else {
-    const liNotRequired = `<li>Inputs specifications not met</li>`;
+    const liNotRequired = `<li>Inputs & labels specifications not met</li>`;
     styleChanges();
-      if(textValidations.innerHTML != liNotRequired){
-        textValidations.innerHTML += liNotRequired;
-      }
+    if (textValidations.innerHTML != liNotRequired) {
+      textValidations.innerHTML += liNotRequired;
+    }
   }
 }
 function anchorRight() {
@@ -122,9 +126,9 @@ function anchorRight() {
   } else {
     const liWrongHref = `<li>Wrong Href</li>`;
     styleChanges();
-      if(textValidations.innerHTML != liWrongHref){
-        textValidations.innerHTML += liWrongHref;
-      }
+    if (textValidations.innerHTML != liWrongHref) {
+      textValidations.innerHTML += liWrongHref;
+    }
   }
 }
 function btnCheck() {
@@ -135,19 +139,18 @@ function btnCheck() {
   } else {
     const liBtn = `<li>Wrong values for the buttons</li>`;
     styleChanges();
-      if(textValidations.innerHTML != liBtn){
-        textValidations.innerHTML += liBtn;
-      }
+    if (textValidations.innerHTML != liBtn) {
+      textValidations.innerHTML += liBtn;
+    }
   }
 }
-function validationsPassed(){
+function validationsPassed() {
   if (
     nameValidation() == true &&
     emailValidation() == true &&
     passwordValidation() == true &&
     confirmValidation() == true &&
     formExist() == true &&
-    inputsRightAmount() == true &&
     inputsAreRequired() == true &&
     anchorRight() == true &&
     btnCheck() == true
@@ -160,14 +163,14 @@ function validationsPassed(){
     passInp.style.border = "2px solid springgreen";
     confirmInp.style.border = "2px solid springgreen";
     textValidations.innerHTML = liPassed;
-  } 
+  }
 }
-function clean(){
-  if(testScreen.style.display = "flex");
-    textValidations.innerHTML = "";
-    testScreen.style.border = "2px solid";
+function clean() {
+  if ((testScreen.style.display = "flex"));
+  textValidations.innerHTML = "";
+  testScreen.style.border = "2px solid";
 }
-function validateAll(){
+function validateAll() {
   clean();
   validationsPassed();
   nameValidation();
@@ -175,10 +178,7 @@ function validateAll(){
   passwordValidation();
   confirmValidation();
   formExist();
-  inputsRightAmount();
   inputsAreRequired();
   anchorRight();
   btnCheck();
 }
-
-

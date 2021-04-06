@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/style.css">
-        <title>Register</title>
-    </head>
-    <body>
-        <section id="form-section">
-            <h1>Register</h1>
-            <div class="form-container">
-                <form action="#">
-                    <label id="lab-name" for="name">Full Name</label>
-                    <input type="text" name="user-name" id="name" value="" placeholder="e.g.: Rodrigo Sibrins" required>
-                    <label id="lab-email" for="email">Email</label>
-                    <input type="email" name="user-email" id="email" value="" placeholder="e.g.: mail@gmail.com" required>
-                    <label id="lab-password" for="password">Password</label>
-                    <input type="password" name="user-password" id="password" value="" placeholder="e.g.: M001lo21XyZ" required>
-                    <label id="lab-confirm" for="confirm-password">Confirm Password</label>
-                    <input type="password" name="user-password" id="confirm-password" value="" placeholder="e.g.: M001lo21XyZ" required>
-                    <div class="btn-container">
-                        <input id="submit-btn" type="submit" value="Register" onclick="validateAll()">
-                        <input id="reset-btn" type="reset" value="Reset">
-                    </div>
-                </form>
-            </div>
-            <div class="link">
-                <a id="anchor" href="login.html">Login</a>
-            </div>
-            <div id="test" class="test-container">
-                <h2>Validations Results:</h2>
-                <ul id="validations">
-                </ul>
-            </div>
-        </section>
-        <script src="js/register.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Register</title>
+</head>
+<body>
+    <section id="form-section">
+        <h1>Register</h1>
+        <div class="form-container">
+            <form action="#">
+                <label id="lab-name" for="name">Full Name</label>
+                <input type="text" name="user-name" id="name" value="" placeholder="e.g.: Rodrigo Sibrins" required>
+                <label id="lab-email" for="email">Email</label>
+                <input type="email" name="user-email" id="email" value="" placeholder="e.g.: mail@gmail.com" required>
+                <label id="lab-password" for="password">Password</label>
+                <input type="password" name="user-password" id="password" value="" placeholder="e.g.: M001lo21XyZ"
+                    required>
+                <label id="lab-confirm" for="confirm-password">Confirm Password</label>
+                <input type="password" name="user-password" id="confirm-password" value=""
+                    placeholder="e.g.: M001lo21XyZ" required>
+                <div class="btn-container">
+                    <input id="submit-btn" type="submit" value="Register" onclick="validateAll()">
+                    <input id="reset-btn" type="reset" value="Reset">
+                </div>
+            </form>
+        </div>
+        <div class="link">
+            <a id="anchor" href="login.html">Login</a>
+        </div>
+        <div id="test" class="test-container">
+            <h2>Validations Results:</h2>
+            <ul id="validations">
+            </ul>
+        </div>
+    </section>
+    <script src="js/register.js"></script>
+</body>
 </html>
