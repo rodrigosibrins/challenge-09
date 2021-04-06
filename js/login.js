@@ -61,14 +61,13 @@ function formExist() {
 function inputsAreRequired() {
   let inpEmail = form.elements[0];
   let inpPassword = form.elements[1];
-  let labEmail = document.getElementById("lab-email").getAttribute("for");
-  let labPassword = document.getElementById("lab-password").getAttribute("for");
-
   if (
     inpEmail.hasAttribute("required") &&
-    labEmail == "email" &&
+    document.getElementById("lab-email") !== null &&
+    document.getElementById("lab-email").getAttribute("for") == "email" &&
     inpPassword.hasAttribute("required") &&
-    labPassword == "password"
+    document.getElementById("lab-password") !== null &&
+    document.getElementById("lab-password").getAttribute("for") == "password"
   ) {
     return true;
   } else {
@@ -104,7 +103,7 @@ function validationsPassed() {
   }
 }
 function clean() {
-  if (testScreen.style.display = "flex");
+  if ((testScreen.style.display = "flex"));
   textValidations.innerHTML = "";
   testScreen.style.border = "2px solid";
 }

@@ -94,21 +94,19 @@ function inputsAreRequired() {
   let inpEmail = form.elements[1];
   let inpPassword = form.elements[2];
   let inpConfirmPass = form.elements[3];
-  let labName = document.getElementById("lab-name").getAttribute("for");
-  let labEmail = document.getElementById("lab-email").getAttribute("for");
-  let labPassword = document.getElementById("lab-password").getAttribute("for");
-  let labConfirmPass = document
-    .getElementById("lab-confirm")
-    .getAttribute("for");
   if (
     inpName.hasAttribute("required") &&
-    labName == "name" &&
+    document.getElementById("lab-name") !== null &&
+    document.getElementById("lab-name").getAttribute("for") == "name" &&
     inpEmail.hasAttribute("required") &&
-    labEmail == "email" &&
+    document.getElementById("lab-email") !== null && 
+    document.getElementById("lab-email").getAttribute("for") == "email" &&
     inpPassword.hasAttribute("required") &&
-    labPassword == "password" &&
+    document.getElementById("lab-password") !== null &&
+    document.getElementById("lab-password").getAttribute("for") == "password" &&
     inpConfirmPass.hasAttribute("required") &&
-    labConfirmPass == "confirm-password"
+    document.getElementById("lab-confirm") !== null &&
+    document.getElementById("lab-confirm").getAttribute("for") == "confirm-password"
   ) {
     return true;
   } else {
