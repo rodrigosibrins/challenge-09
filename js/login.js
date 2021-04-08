@@ -77,7 +77,7 @@ function validationsPassed() {
     inputsAreRequired() == true &&
     btnCheck() == true
   ) {
-    const liPassed = `<li>Every Validation has Passed!</li>`;
+    const liPassed = `<li>Every DOM Validation has Passed!</li>`;
     testScreen.style.display = "flex";
     testScreen.style.border = "2px solid springgreen";
     textValidations.innerHTML = liPassed;

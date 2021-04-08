@@ -7,7 +7,7 @@ function checkName() {
   if (
     nameInp.value !== "" &&
     nameInp.value.length >= 8 &&
-    nameInp.value.split(" ").length >= 2 &&
+    nameInp.value.trim().split(" ").length >= 2 &&
     isNaN(parseInt(nameInp.value)) &&
     !nameInp.value.match(symbolsReg)
   ) {
@@ -43,6 +43,7 @@ function checkEmail() {
     emailInp.value.match(dotCom) &&
     emailInp.value.match(subdomain)
   ) {
+    console.log();
     return true;
   } else {
     return false;
