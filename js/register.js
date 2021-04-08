@@ -10,72 +10,42 @@ function styleChanges() {
   testScreen.style.display = "flex";
   testScreen.style.border = "2px solid crimson";
 }
-function nameValidation() {
-  if (nameInp == null) {
-    styleChanges();
-    textValidations.innerHTML = `<li>Name input is missing</li>`;
-  } else if (nameInp.value === "" || nameInp.value === null) {
-    const liName = `<li>Name input is empty</li>`;
-    styleChanges();
-    nameInp.style.border = "2px solid crimson";
-    textValidations.innerHTML = liName;
-  } else {
+function inputsExist() {
+  if (
+    nameInp !== null &&
+    emailInp !== null &&
+    passInp !== null &&
+    confirmInp !== null
+  ) {
     return true;
-  }
-}
-function emailValidation() {
-  let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (emailInp == null) {
-    const liEmailNull = `<li>Email input is missing</li>`;
-    styleChanges();
-    if (textValidations.innerHTML != liEmailNull) {
-      textValidations.innerHTML += liEmailNull;
-    }
-  } else if (emailInp == null || emailInp.value === "") {
-    const liEmail = `<li>Not valid email</li>`;
-    styleChanges();
-    emailInp.style.border = "2px solid crimson";
-    if (textValidations.innerHTML != liEmail) {
-      textValidations.innerHTML += liEmail;
-    } else if (emailInp.value.match(pattern)) {
-      return true;
-    }
-  }
-}
-function passwordValidation() {
-  if (passInp == null) {
-    const liPassNull = `<li>Password input is missing</li>`;
-    styleChanges();
-    if (textValidations.innerHTML != liPassNull) {
-      textValidations.innerHTML += liPassNull;
-    }
-  } else if (passInp.value.length < 8 || passInp.value.length >= 20) {
-    const liPass = `<li>Password must have at least 8 characters</li>`;
-    styleChanges();
-    passInp.style.border = "2px solid crimson";
-    if (textValidations.innerHTML != liPass) {
-      textValidations.innerHTML += liPass;
-    }
   } else {
-    return true;
-  }
-}
-function confirmValidation() {
-  if (confirmInp == null) {
-    const liConfirmNull = `<li>Confirm Password input is missing</li>`;
-    styleChanges();
-    if (textValidations.innerHTML != liConfirmNull) {
-      textValidations.innerHTML += liConfirmNull;
+    if (nameInp == null) {
+      styleChanges();
+      if (textValidations.innerHTML != `<li>Name input is missing</li>`) {
+        textValidations.innerHTML += `<li>Name input is missing</li>`;
+      }
     }
-  } else if (confirmInp.value != passInp.value || confirmInp.value === "") {
-    const liConfirm = `<li>The confirm password is wrong!</li>`;
-    styleChanges();
-    confirmInp.style.border = "2px solid crimson";
-    if (textValidations.innerHTML != liConfirm) {
-      textValidations.innerHTML += liConfirm;
+    if (emailInp == null) {
+      const liEmailNull = `<li>Email input is missing</li>`;
+      styleChanges();
+      if (textValidations.innerHTML != liEmailNull) {
+        textValidations.innerHTML += liEmailNull;
+      }
     }
-  } else {
-    return true;
+    if (passInp == null) {
+      const liPassNull = `<li>Password input is missing</li>`;
+      styleChanges();
+      if (textValidations.innerHTML != liPassNull) {
+        textValidations.innerHTML += liPassNull;
+      }
+    }
+    if (confirmInp == null) {
+      const liConfirmNull = `<li>Confirm Password input is missing</li>`;
+      styleChanges();
+      if (textValidations.innerHTML != liConfirmNull) {
+        textValidations.innerHTML += liConfirmNull;
+      }
+    }
   }
 }
 function formExist() {
@@ -99,14 +69,15 @@ function inputsAreRequired() {
     document.getElementById("lab-name") !== null &&
     document.getElementById("lab-name").getAttribute("for") == "name" &&
     inpEmail.hasAttribute("required") &&
-    document.getElementById("lab-email") !== null && 
+    document.getElementById("lab-email") !== null &&
     document.getElementById("lab-email").getAttribute("for") == "email" &&
     inpPassword.hasAttribute("required") &&
     document.getElementById("lab-password") !== null &&
     document.getElementById("lab-password").getAttribute("for") == "password" &&
     inpConfirmPass.hasAttribute("required") &&
     document.getElementById("lab-confirm") !== null &&
-    document.getElementById("lab-confirm").getAttribute("for") == "confirm-password"
+    document.getElementById("lab-confirm").getAttribute("for") ==
+      "confirm-password"
   ) {
     return true;
   } else {
@@ -118,8 +89,8 @@ function inputsAreRequired() {
   }
 }
 function anchorRight() {
-  let anchorHref = document.getElementById("anchor").href;
-  if (anchorHref == "http://127.0.0.1:5500/login.html") {
+  let anchorHref = document.getElementById("anchor").getAttribute('href');
+  if (anchorHref == "./login.html") {
     return true;
   } else {
     const liWrongHref = `<li>Wrong Href</li>`;
@@ -144,37 +115,26 @@ function btnCheck() {
 }
 function validationsPassed() {
   if (
-    nameValidation() == true &&
-    emailValidation() == true &&
-    passwordValidation() == true &&
-    confirmValidation() == true &&
+    inputsExist() == true &&
     formExist() == true &&
     inputsAreRequired() == true &&
     anchorRight() == true &&
     btnCheck() == true
   ) {
-    const liPassed = `<li>Every Validation has Passed!</li>`;
+    const liPassed = `<li>Every DOM Validation has Passed!</li>`;
     testScreen.style.display = "flex";
     testScreen.style.border = "2px solid springgreen";
-    nameInp.style.border = "2px solid springgreen";
-    emailInp.style.border = "2px solid springgreen";
-    passInp.style.border = "2px solid springgreen";
-    confirmInp.style.border = "2px solid springgreen";
     textValidations.innerHTML = liPassed;
   }
 }
 function clean() {
-  if ((testScreen.style.display = "flex"));
   textValidations.innerHTML = "";
   testScreen.style.border = "2px solid";
 }
 function validateAll() {
   clean();
   validationsPassed();
-  nameValidation();
-  emailValidation();
-  passwordValidation();
-  confirmValidation();
+  inputsExist();
   formExist();
   inputsAreRequired();
   anchorRight();

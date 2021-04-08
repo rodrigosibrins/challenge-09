@@ -50,6 +50,26 @@ input::placeholder{
 input:focus::placeholder{
     color: transparent;
 }
+#name-screen{
+    display: none;
+    font-size: 13px;
+    color: crimson;
+}
+#email-screen{
+    display: none;
+    font-size: 13px;
+    color: crimson;
+}
+#password-screen{
+    display: none;
+    font-size: 13px;
+    color: crimson;
+}
+#confirm-screen{
+    display: none;
+    font-size: 13px;
+    color: crimson;
+}
 .btn-container{
     display: flex;
     justify-content: center;

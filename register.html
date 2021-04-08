@@ -15,14 +15,18 @@
             <form action="#">
                 <label id="lab-name" for="name">Full Name</label>
                 <input type="text" name="user-name" id="name" value="" placeholder="e.g.: Rodrigo Sibrins" required>
+                <div id="name-screen"></div>
                 <label id="lab-email" for="email">Email</label>
                 <input type="email" name="user-email" id="email" value="" placeholder="e.g.: mail@gmail.com" required>
+                <div id="email-screen"></div>
                 <label id="lab-password" for="password">Password</label>
                 <input type="password" name="user-password" id="password" value="" placeholder="e.g.: M001lo21XyZ"
                     required>
+                <div id="password-screen"></div>
                 <label id="lab-confirm" for="confirm-password">Confirm Password</label>
                 <input type="password" name="user-password" id="confirm-password" value=""
                     placeholder="e.g.: M001lo21XyZ" required>
+                <div id="confirm-screen"></div>
                 <div class="btn-container">
                     <input id="submit-btn" type="submit" value="Register" onclick="validateAll()">
                     <input id="reset-btn" type="reset" value="Reset">
@@ -30,7 +34,7 @@
             </form>
         </div>
         <div class="link">
-            <a id="anchor" href="login.html">Login</a>
+            <a id="anchor" href="./login.html">Login</a>
         </div>
         <div id="test" class="test-container">
             <h2>Validations Results:</h2>
@@ -39,5 +43,6 @@
         </div>
     </section>
     <script src="js/register.js"></script>
+    <script src="js/register-data-validation.js"></script>
 </body>
 </html>
