@@ -21,7 +21,7 @@ nameInp.addEventListener("blur", function () {
     console.log();
     nameScreen.style.display = "flex";
     nameScreen.innerHTML = "Correct";
-    nameScreen.style.color = "green";
+    nameScreen.style.color = "springgreen";
     nameInp.style.border = "2px solid springgreen";
   } else {
     nameScreen.style.display = "flex";
@@ -53,7 +53,7 @@ emailInp.addEventListener("blur", function () {
   if (checkEmail()) {
     emailScreen.style.display = "flex";
     emailScreen.innerHTML = "Correct";
-    emailScreen.style.color = "green";
+    emailScreen.style.color = "springgreen";
     emailInp.style.border = "2px solid springgreen";
   } else {
     emailScreen.style.display = "flex";
@@ -78,7 +78,7 @@ passInp.addEventListener("blur", function () {
   if (checkPassword()) {
     passwordScreen.style.display = "flex";
     passwordScreen.innerHTML = "Correct";
-    passwordScreen.style.color = "green";
+    passwordScreen.style.color = "springgreen";
     passInp.style.border = "2px solid springgreen";
   } else {
     passwordScreen.style.display = "flex";
@@ -102,7 +102,7 @@ confirmInp.addEventListener("blur", function () {
   if (checkConfirm()) {
     confirmScreen.style.display = "flex";
     confirmScreen.innerHTML = "Correct";
-    confirmScreen.style.color = "green";
+    confirmScreen.style.color = "springgreen";
     confirmInp.style.border = "2px solid springgreen";
   } else {
     confirmScreen.style.display = "flex";
