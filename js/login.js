@@ -47,6 +47,9 @@ function formExist() {
 function labelsInputs(){
   if (emailLab !== null && emailLab.getAttribute('for')  == "email" &&
       passLab !== null && passLab.getAttribute('for')  == "password") {
+    if (textValidations.innerHTML != `<li>Labels & inputs well associated :)</li>`) {
+        textValidations.innerHTML += `<li>Labels & inputs well associated :)</li>`;
+        }
     return true;
   } else {
     const labelsNotAssociated = `<li>Label not associated with input</li>`;
@@ -61,6 +64,9 @@ function inputsAreRequired() {
     emailInp.hasAttribute("required") &&
     passInp.hasAttribute("required")
   ) {
+    if (textValidations.innerHTML != `<li>Inputs are required :)</li>`) {
+        textValidations.innerHTML += `<li>Inputs are required :)</li>`;
+      }
     return true;
   } else {
     const liNotRequired = `<li>Inputs Not Required!</li>`;

@@ -32,8 +32,9 @@ emailInp.addEventListener("focus", function () {
   emailInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 function checkPassword() {
-  var passwReg = /[0-9]/;
-  if (passInp.value.match(passwReg) && passInp.value.length >= 8) {
+  let symbolsRegex = /([@"'.?*+^$])/
+  let passwReg = /[0-9]/;
+  if (passInp.value.match(passwReg) && passInp.value.length >= 8 && !passInp.value.match(symbolsRegex)) {
     return true;
   } else {
     return false;

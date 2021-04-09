@@ -4,7 +4,7 @@ let passwordScreen = document.getElementById("password-screen");
 let confirmScreen = document.getElementById("confirm-screen");
 let resetBtn = document.getElementById("reset-btn");
 function checkName() {
-  var symbolsReg = /([@"'.?*+^$])/;
+  let symbolsReg = /([@"'.?*+^$])/;
   if (
     nameInp.value !== "" &&
     nameInp.value.length >= 8 &&
@@ -68,8 +68,9 @@ emailInp.addEventListener("focus", function () {
   emailInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 function checkPassword() {
+  let symbolsRegex = /([@"'.?*+^$])/;
   var passwReg = /[0-9]/;
-  if (passInp.value.match(passwReg) && passInp.value.length >= 8 && !passInp.value.match(passwReg)) {
+  if (passInp.value.match(passwReg) && passInp.value.length >= 8 && !passInp.value.match(symbolsRegex)) {
     return true;
   } else {
     return false;
