@@ -6,6 +6,10 @@ let nameInp = document.getElementById("name");
 let emailInp = document.getElementById("email");
 let passInp = document.getElementById("password");
 let confirmInp = document.getElementById("confirm-password");
+let nameLab = document.getElementById("lab-name");
+let emailLab = document.getElementById("lab-email");
+let passLab = document.getElementById("lab-password");
+let confirmLab = document.getElementById("lab-confirm");
 function styleChanges() {
   testScreen.style.display = "flex";
   testScreen.style.border = "2px solid crimson";
@@ -59,29 +63,30 @@ function formExist() {
     }
   }
 }
+function labelsInputs(){
+  if (nameLab !== null && nameLab.getAttribute('for') == "name" &&
+      emailLab !== null && emailLab.getAttribute('for')  == "email" &&
+      passLab !== null && passLab.getAttribute('for')  == "password" &&
+      confirmLab !== null && confirmLab.getAttribute('for')  == "confirm-password") {
+    return true;
+  } else {
+    const labelsNotAssociated = `<li>Label not associated with input</li>`;
+    styleChanges();
+    if (textValidations.innerHTML != labelsNotAssociated) {
+      textValidations.innerHTML += labelsNotAssociated;
+    }
+  }
+}
 function inputsAreRequired() {
-  let inpName = form.elements[0];
-  let inpEmail = form.elements[1];
-  let inpPassword = form.elements[2];
-  let inpConfirmPass = form.elements[3];
   if (
-    inpName.hasAttribute("required") &&
-    document.getElementById("lab-name") !== null &&
-    document.getElementById("lab-name").getAttribute("for") == "name" &&
-    inpEmail.hasAttribute("required") &&
-    document.getElementById("lab-email") !== null &&
-    document.getElementById("lab-email").getAttribute("for") == "email" &&
-    inpPassword.hasAttribute("required") &&
-    document.getElementById("lab-password") !== null &&
-    document.getElementById("lab-password").getAttribute("for") == "password" &&
-    inpConfirmPass.hasAttribute("required") &&
-    document.getElementById("lab-confirm") !== null &&
-    document.getElementById("lab-confirm").getAttribute("for") ==
-      "confirm-password"
+    nameInp.hasAttribute("required") &&
+    emailInp.hasAttribute("required") &&
+    passInp.hasAttribute("required") &&
+    confirmInp.hasAttribute("required") 
   ) {
     return true;
   } else {
-    const liNotRequired = `<li>Inputs & labels specifications not met</li>`;
+    const liNotRequired = `<li>Inputs Not Required!</li>`;
     styleChanges();
     if (textValidations.innerHTML != liNotRequired) {
       textValidations.innerHTML += liNotRequired;
@@ -117,6 +122,7 @@ function validationsPassed() {
   if (
     inputsExist() == true &&
     formExist() == true &&
+    labelsInputs() == true &&
     inputsAreRequired() == true &&
     anchorRight() == true &&
     btnCheck() == true
@@ -136,6 +142,7 @@ function validateAll() {
   validationsPassed();
   inputsExist();
   formExist();
+  labelsInputs();
   inputsAreRequired();
   anchorRight();
   btnCheck();

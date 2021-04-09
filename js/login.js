@@ -2,6 +2,8 @@ let form = document.querySelector("form");
 let loginBtn = document.getElementById("login-btn");
 let emailInp = document.getElementById("email");
 let passInp = document.getElementById("password");
+let emailLab = document.getElementById("lab-email");
+let passLab = document.getElementById("lab-password");
 let testScreen = document.getElementById("test");
 let textValidations = document.getElementById("validations");
 function styleChanges() {
@@ -42,22 +44,30 @@ function formExist() {
     }
   }
 }
+function labelsInputs(){
+  if (emailLab !== null && emailLab.getAttribute('for')  == "email" &&
+      passLab !== null && passLab.getAttribute('for')  == "password") {
+    return true;
+  } else {
+    const labelsNotAssociated = `<li>Label not associated with input</li>`;
+    styleChanges();
+    if (textValidations.innerHTML != labelsNotAssociated) {
+      textValidations.innerHTML += labelsNotAssociated;
+    }
+  }
+}
 function inputsAreRequired() {
-  let inpEmail = form.elements[0];
-  let inpPassword = form.elements[1];
   if (
-    inpEmail.hasAttribute("required") &&
-    document.getElementById("lab-email") !== null &&
-    document.getElementById("lab-email").getAttribute("for") == "email" &&
-    inpPassword.hasAttribute("required") &&
-    document.getElementById("lab-password") !== null &&
-    document.getElementById("lab-password").getAttribute("for") == "password"
+    emailInp.hasAttribute("required") &&
+    passInp.hasAttribute("required")
   ) {
     return true;
   } else {
-    const liNotRequired = `<li>Inputs & labels specifications not met</li>`;
+    const liNotRequired = `<li>Inputs Not Required!</li>`;
     styleChanges();
-    textValidations.innerHTML += liNotRequired;
+    if (textValidations.innerHTML != liNotRequired) {
+      textValidations.innerHTML += liNotRequired;
+    }
   }
 }
 function btnCheck() {
@@ -74,6 +84,7 @@ function validationsPassed() {
   if (
     inputsExist() == true &&
     formExist() == true &&
+    labelsInputs() == true &&
     inputsAreRequired() == true &&
     btnCheck() == true
   ) {
@@ -92,6 +103,7 @@ function validateAll() {
   validationsPassed();
   inputsExist();
   formExist();
+  labelsInputs();
   inputsAreRequired();
   btnCheck();
 }
