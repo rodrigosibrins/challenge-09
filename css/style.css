@@ -1,8 +1,7 @@
 body{
     font-family: sans-serif;
-    background-image: url(../img/background.png);
-    background-size: 100% 108%;
-    background-attachment: fixed;
+    background: url(../img/background.png) center center fixed;
+    background-size: 100% 100vh;
 }
 #form-section{
     display: flex;

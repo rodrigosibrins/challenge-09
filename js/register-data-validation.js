@@ -2,6 +2,7 @@ let nameScreen = document.getElementById("name-screen");
 let emailScreen = document.getElementById("email-screen");
 let passwordScreen = document.getElementById("password-screen");
 let confirmScreen = document.getElementById("confirm-screen");
+let resetBtn = document.getElementById("reset-btn");
 function checkName() {
   var symbolsReg = /([@"'.?*+^$])/;
   if (
@@ -68,7 +69,7 @@ emailInp.addEventListener("focus", function () {
 });
 function checkPassword() {
   var passwReg = /[0-9]/;
-  if (passInp.value.match(passwReg) && passInp.value.length >= 8) {
+  if (passInp.value.match(passwReg) && passInp.value.length >= 8 && !passInp.value.match(passwReg)) {
     return true;
   } else {
     return false;
@@ -127,4 +128,8 @@ form.addEventListener("submit", function (e) {
   } else {
     return false;
   }
+});
+resetBtn.addEventListener("click", function(e){
+  e.preventDefault();
+  location.reload();
 });
