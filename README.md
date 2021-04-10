@@ -1,8 +1,8 @@
-# Challenge 09
+# Challenge 09 & Challenge 10
 
 **Register/Login Validations**
 
-Solution to the challenge number 09.
+Solution to the challenge number 09 & 10.
 
 ## Developer
 
