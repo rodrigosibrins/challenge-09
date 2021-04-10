@@ -63,6 +63,8 @@ form.addEventListener("submit", function (e) {
     testScreen.style.display = "flex";
     textValidations.innerHTML += `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>`;
+    fetch('https://jsonplaceholder.typicode.com/users?email=randomEmail@gmail.com')
+      .then(response => console.log(response));
   } else {
     return false;
   }
