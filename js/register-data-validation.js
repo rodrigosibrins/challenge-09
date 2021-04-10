@@ -126,6 +126,9 @@ form.addEventListener("submit", function (e) {
       `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>` +
       `<li>${confirmInp.value}</li>`;
+    fetch('https://jsonplaceholder.typicode.com/users?email=randomEmail@gmail.com')
+      .then(response => response.json())
+      .then(json => console.log(json));
   } else {
     return false;
   }
