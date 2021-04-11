@@ -1,5 +1,6 @@
 let emailScreen = document.getElementById("email-screen");
 let passwordScreen = document.getElementById("password-screen");
+let actionAttribute = form.getAttribute("action");
 function checkEmail() {
   let dotCom = /.com/;
   let mailReg = /@/;
@@ -63,6 +64,7 @@ form.addEventListener("submit", function (e) {
     testScreen.style.display = "flex";
     textValidations.innerHTML += `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>`;
+    actionAttribute = actionAttribute + emailInp.value;
     fetch('https://jsonplaceholder.typicode.com/users?email=randomEmail@gmail.com')
       .then(response => console.log(response));
   } else {

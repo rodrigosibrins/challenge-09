@@ -3,6 +3,7 @@ let emailScreen = document.getElementById("email-screen");
 let passwordScreen = document.getElementById("password-screen");
 let confirmScreen = document.getElementById("confirm-screen");
 let resetBtn = document.getElementById("reset-btn");
+let actionAttribute = form.getAttribute('action');
 function checkName() {
   let symbolsReg = /([@"'.?*+^$])/;
   if (
@@ -19,7 +20,6 @@ function checkName() {
 }
 nameInp.addEventListener("blur", function () {
   if (checkName()) {
-    console.log();
     nameScreen.style.display = "flex";
     nameScreen.innerHTML = "Correct";
     nameScreen.style.color = "springgreen";
@@ -126,6 +126,8 @@ form.addEventListener("submit", function (e) {
       `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>` +
       `<li>${confirmInp.value}</li>`;
+    actionAttribute = actionAttribute + emailInp.value;
+    console.log(actionAttribute);
     fetch('https://jsonplaceholder.typicode.com/users?email=randomEmail@gmail.com')
       .then(response => console.log(response));
   } else {
