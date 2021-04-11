@@ -128,7 +128,7 @@ form.addEventListener("submit", function (e) {
       `<li>${confirmInp.value}</li>`;
     actionAttribute = actionAttribute + emailInp.value;
     console.log(actionAttribute);
-    fetch('https://jsonplaceholder.typicode.com/users?email=randomEmail@gmail.com')
+    fetch(actionAttribute)
       .then(response => console.log(response));
   } else {
     return false;
