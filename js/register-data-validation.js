@@ -3,7 +3,6 @@ let emailScreen = document.getElementById("email-screen");
 let passwordScreen = document.getElementById("password-screen");
 let confirmScreen = document.getElementById("confirm-screen");
 let resetBtn = document.getElementById("reset-btn");
-let actionAttribute = form.getAttribute('action');
 function checkName() {
   let symbolsReg = /([@"'.?*+^$])/;
   if (
@@ -118,7 +117,6 @@ confirmInp.addEventListener("focus", function () {
   confirmInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 form.addEventListener("submit", function (e) {
-  e.preventDefault();
   if (checkName() && checkEmail() && checkPassword() && checkConfirm()) {
     testScreen.style.display = "flex";
     textValidations.innerHTML +=
@@ -126,10 +124,9 @@ form.addEventListener("submit", function (e) {
       `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>` +
       `<li>${confirmInp.value}</li>`;
-    actionAttribute = actionAttribute + emailInp.value;
-    console.log(actionAttribute);
-    fetch(actionAttribute)
+    fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInp.value}`)
       .then(response => console.log(response));
+    e.preventDefault();
   } else {
     return false;
   }

@@ -1,6 +1,5 @@
 let emailScreen = document.getElementById("email-screen");
 let passwordScreen = document.getElementById("password-screen");
-let actionAttribute = form.getAttribute("action");
 function checkEmail() {
   let dotCom = /.com/;
   let mailReg = /@/;
@@ -59,14 +58,13 @@ passInp.addEventListener("focus", function () {
   passInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 form.addEventListener("submit", function (e) {
-  e.preventDefault();
   if (checkEmail() && checkPassword()) {
     testScreen.style.display = "flex";
     textValidations.innerHTML += `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>`;
-    actionAttribute = actionAttribute + emailInp.value;
-    fetch('https://jsonplaceholder.typicode.com/users?email=randomEmail@gmail.com')
+    fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInp.value}`)
       .then(response => console.log(response));
+    e.preventDefault();
   } else {
     return false;
   }
