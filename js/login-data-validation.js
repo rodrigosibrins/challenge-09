@@ -48,7 +48,7 @@ passInp.addEventListener("blur", function () {
     passInp.style.border = "2px solid springgreen";
   } else {
     passwordScreen.style.display = "flex";
-    passwordScreen.innerHTML = "Invalid Password";
+    passwordScreen.innerHTML = "Doesn't match the password";
     passwordScreen.style.color = "Crimson";
     passInp.style.border = "2px solid Crimson";
   }

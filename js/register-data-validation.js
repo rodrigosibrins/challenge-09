@@ -3,6 +3,11 @@ let emailScreen = document.getElementById("email-screen");
 let passwordScreen = document.getElementById("password-screen");
 let confirmScreen = document.getElementById("confirm-screen");
 let resetBtn = document.getElementById("reset-btn");
+function nameRedStyles(){
+  nameScreen.style.display = "flex";
+  nameScreen.style.color = "Crimson";
+  nameInp.style.border = "2px solid Crimson";
+}
 function checkName() {
   let symbolsReg = /([@"'.?*+^$])/;
   if (
@@ -23,11 +28,21 @@ nameInp.addEventListener("blur", function () {
     nameScreen.innerHTML = "Correct";
     nameScreen.style.color = "springgreen";
     nameInp.style.border = "2px solid springgreen";
+  } else if(nameInp.value == "") {
+    invalidStyles();
+    nameScreen.innerHTML = "Complete with name and surname";
+  }else if(!isNaN(parseInt(nameInp.value))) {
+    invalidStyles();
+    nameScreen.innerHTML = "Numbers and symbols are not allowed";
+  } else if(nameInp.value.trim().split(" ").length < 2) {
+    invalidStyles();
+    nameScreen.innerHTML = "At least 8 characters with a space in between";
+  } else if(nameInp.value.length < 8) {
+    invalidStyles();
+    nameScreen.innerHTML = "At least 8 characters with a space in between";
   } else {
-    nameScreen.style.display = "flex";
-    nameScreen.innerHTML = "Name format not valid";
-    nameScreen.style.color = "Crimson";
-    nameInp.style.border = "2px solid Crimson";
+    invalidStyles();
+    nameScreen.innerHTML = "Numbers and symbols are not allowed";
   }
 });
 nameInp.addEventListener("focus", function () {
@@ -81,11 +96,11 @@ passInp.addEventListener("blur", function () {
     passwordScreen.innerHTML = "Correct";
     passwordScreen.style.color = "springgreen";
     passInp.style.border = "2px solid springgreen";
-  } else {
+  } else{
     passwordScreen.style.display = "flex";
-    passwordScreen.innerHTML = "Invalid Password";
     passwordScreen.style.color = "Crimson";
     passInp.style.border = "2px solid Crimson";
+    passwordScreen.innerHTML = "At least 8 characters (only letters and numbers)";
   }
 });
 passInp.addEventListener("focus", function () {
@@ -107,7 +122,7 @@ confirmInp.addEventListener("blur", function () {
     confirmInp.style.border = "2px solid springgreen";
   } else {
     confirmScreen.style.display = "flex";
-    confirmScreen.innerHTML = "Invalid Password";
+    confirmScreen.innerHTML = "Doesn't match the password";
     confirmScreen.style.color = "Crimson";
     confirmInp.style.border = "2px solid Crimson";
   }
