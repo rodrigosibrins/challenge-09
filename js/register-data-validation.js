@@ -29,19 +29,19 @@ nameInp.addEventListener("blur", function () {
     nameScreen.style.color = "springgreen";
     nameInp.style.border = "2px solid springgreen";
   } else if(nameInp.value == "") {
-    invalidStyles();
+    nameRedStyles();
     nameScreen.innerHTML = "Complete with name and surname";
   }else if(!isNaN(parseInt(nameInp.value))) {
-    invalidStyles();
+    nameRedStyles();
     nameScreen.innerHTML = "Numbers and symbols are not allowed";
   } else if(nameInp.value.trim().split(" ").length < 2) {
-    invalidStyles();
+    nameRedStyles();
     nameScreen.innerHTML = "At least 8 characters with a space in between";
   } else if(nameInp.value.length < 8) {
-    invalidStyles();
+    nameRedStyles();
     nameScreen.innerHTML = "At least 8 characters with a space in between";
   } else {
-    invalidStyles();
+    nameRedStyles();
     nameScreen.innerHTML = "Numbers and symbols are not allowed";
   }
 });
