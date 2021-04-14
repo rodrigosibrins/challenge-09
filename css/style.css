@@ -53,24 +53,27 @@ input::placeholder{
 input:focus::placeholder{
     color: transparent;
 }
-/*Agregar*/
 #name-screen{
     display: none;
+    padding-top: 7px;
     font-size: 13px;
-    color: crimson;
+    color: #ce1212;
 }
 #email-screen{
     display: none;
+    padding-top: 7px;
     font-size: 13px;
-    color: crimson;
+    color: #ce1212;
 }
 #password-screen{
     display: none;
+    padding-top: 7px;
     font-size: 13px;
-    color: crimson;
+    color: #ce1212;
 }
 #confirm-screen{
     display: none;
+    padding-top: 7px;
     font-size: 13px;
     color: crimson;
 }
@@ -108,15 +111,16 @@ input:focus::placeholder{
     color: cornflowerblue;
 }
 .test-container{
+    width: 30em;
+    height: auto;
     display: none;
     flex-direction: column;
     align-items: center;
-    width: 30em;
-    height: auto;
     margin-top: 10px;
     padding-top: 10px;
     border: 2px solid springgreen;
     border-radius: 7px;
+    background-color: #7a9ba1;
 }
 .test-container h2{
     padding-bottom: 10px;

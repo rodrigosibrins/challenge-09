@@ -5,16 +5,17 @@ let confirmScreen = document.getElementById("confirm-screen");
 let resetBtn = document.getElementById("reset-btn");
 function nameRedStyles(){
   nameScreen.style.display = "flex";
-  nameScreen.style.color = "Crimson";
-  nameInp.style.border = "2px solid Crimson";
+  nameScreen.style.color = '#f05945';
+  nameInp.style.border = "2px solid #f05945";
 }
 function checkName() {
-  let symbolsReg = /([@"'.?*+^$])/;
+  let symbolsReg = /([@"'.?*+^$#])/;
+  let numbersReg = /[0-9]/;
   if (
     nameInp.value !== "" &&
     nameInp.value.length >= 8 &&
     nameInp.value.trim().split(" ").length >= 2 &&
-    isNaN(parseInt(nameInp.value)) &&
+    !nameInp.value.match(numbersReg) &&
     !nameInp.value.match(symbolsReg)
   ) {
     return true;
@@ -23,6 +24,8 @@ function checkName() {
   }
 }
 nameInp.addEventListener("blur", function () {
+  let symbolsReg = /([@"'.?*+^$#])/;
+  let numbersReg = /[0-9]/;
   if (checkName()) {
     nameScreen.style.display = "flex";
     nameScreen.innerHTML = "Correct";
@@ -31,7 +34,7 @@ nameInp.addEventListener("blur", function () {
   } else if(nameInp.value == "") {
     nameRedStyles();
     nameScreen.innerHTML = "Complete with name and surname";
-  }else if(!isNaN(parseInt(nameInp.value))) {
+  }else if(nameInp.value.match(numbersReg) && nameInp.value.match(symbolsReg)) {
     nameRedStyles();
     nameScreen.innerHTML = "Numbers and symbols are not allowed";
   } else if(nameInp.value.trim().split(" ").length < 2) {
@@ -73,8 +76,8 @@ emailInp.addEventListener("blur", function () {
   } else {
     emailScreen.style.display = "flex";
     emailScreen.innerHTML = "Invalid Email";
-    emailScreen.style.color = "Crimson";
-    emailInp.style.border = "2px solid Crimson";
+    emailScreen.style.color = "#f05945";
+    emailInp.style.border = "2px solid #f05945";
   }
 });
 emailInp.addEventListener("focus", function () {
@@ -98,8 +101,8 @@ passInp.addEventListener("blur", function () {
     passInp.style.border = "2px solid springgreen";
   } else{
     passwordScreen.style.display = "flex";
-    passwordScreen.style.color = "Crimson";
-    passInp.style.border = "2px solid Crimson";
+    passwordScreen.style.color = "#f05945";
+    passInp.style.border = "2px solid #f05945";
     passwordScreen.innerHTML = "At least 8 characters (only letters and numbers)";
   }
 });
@@ -123,8 +126,8 @@ confirmInp.addEventListener("blur", function () {
   } else {
     confirmScreen.style.display = "flex";
     confirmScreen.innerHTML = "Doesn't match the password";
-    confirmScreen.style.color = "Crimson";
-    confirmInp.style.border = "2px solid Crimson";
+    confirmScreen.style.color = "#f05945";
+    confirmInp.style.border = "2px solid #f05945";
   }
 });
 confirmInp.addEventListener("focus", function () {
