@@ -143,12 +143,9 @@ form.addEventListener("submit", function (e) {
       `<li>${passInp.value}</li>` +
       `<li>${confirmInp.value}</li>`;
     fetch('http://localhost:4000/register', {
-      mode: 'no-cors',
       method: 'POST',
       body: JSON.stringify({name: `${nameInp.value}`}),
-      headers:{
-        'Content-Type': 'application/json',
-      }
+      headers: {'Content-Type': 'application/json'}
     });
     e.preventDefault();
   } else {
