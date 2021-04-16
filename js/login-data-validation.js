@@ -62,8 +62,11 @@ form.addEventListener("submit", function (e) {
     testScreen.style.display = "flex";
     textValidations.innerHTML += `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>`;
-    fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInp.value}`)
-      .then(response => console.log(response));
+      fetch('http://localhost:4000/login', {
+        method: 'PUT',
+        body: JSON.stringify({email: `${emailInp.value}`, password: `${passInp.value}`}),
+        headers: {'Content-Type': 'application/json'}
+      });
     e.preventDefault();
   } else {
     return false;
