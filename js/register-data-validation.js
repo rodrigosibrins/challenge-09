@@ -142,8 +142,14 @@ form.addEventListener("submit", function (e) {
       `<li>${emailInp.value}</li>` +
       `<li>${passInp.value}</li>` +
       `<li>${confirmInp.value}</li>`;
-    fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInp.value}`)
-      .then(response => console.log(response));
+    fetch('http://localhost:4000/register', {
+      mode: 'no-cors',
+      method: 'POST',
+      body: JSON.stringify({name: `${nameInp.value}`}),
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    });
     e.preventDefault();
   } else {
     return false;
