@@ -4,7 +4,7 @@
   "description": "**Register/Login Validations**",
   "main": "index.js",
   "scripts": {
-    "test": "npx wdio run ./wdio.conf.js --spec login-automation.js"
+    "test": "npx wdio run ./wdio.conf.js --spec register-automation.js"
   },
   "repository": {
     "type": "git",

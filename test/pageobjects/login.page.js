@@ -10,21 +10,18 @@ class LoginPage {
     login (email, password) {
         this.inputEmail.setValue(email);
         this.inputPassword.setValue(password);
-        this.btn.click();
+        this.btnLogin.click();
     }
-
     setEmail (value){
         this.inputEmail.click();
         this.inputEmail.setValue(value);
         this.inputEmail.keys("Tab");
     }
-
     setPassword (value){
         this.inputPassword.click();
         this.inputPassword.setValue(value);
         this.inputPassword.keys("Tab");
     }
-
     open () {
         return browser.url('https://rodrigosibrins.github.io/challenge-09/login.html');
     }
