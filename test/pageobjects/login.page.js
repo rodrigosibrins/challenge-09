@@ -1,27 +1,20 @@
-const Page = require('./page');
-
-/**
- * sub page containing specific selectors and methods for a specific page
- */
-class LoginPage extends Page {
-    /**
-     * define selectors using getter methods
-     */
-    get inputUsername () { return $('#username') }
+class LoginPage {
+    get inputEmail () { return $('#email') }
+    get emailScreen () { return $('#email-screen') }
     get inputPassword () { return $('#password') }
-    get btnSubmit () { return $('button[type="submit"]') }
+    get passwordScreen () { return $('#password-screen') }
+    get btnLogin () { return $('//*[@id="login-btn"]') }
+    get linkRegister () { return $('#link-reg') }
+    get validations () { return $('#validations') }
 
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    async login (username, password) {
-        await (await this.inputUsername).setValue(username);
-        await (await this.inputPassword).setValue(password);
-        await (await this.btnSubmit).click();
+    
+    login (email, password) {
+        this.inputEmail.setValue(email);
+        this.inputPassword.setValue(password);
+        this.btnLogin.click();
     }
     open () {
-        return browser.url('https://rodrigosibrins.github.io/htmlnews/');
+        return browser.url('https://rodrigosibrins.github.io/challenge-09/login.html');
     }
 }
 
