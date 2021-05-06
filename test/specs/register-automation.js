@@ -114,14 +114,14 @@ describe("Register automation", () =>{
             browser.pause(3000);  
         });
     });
+    */
     describe("Testing Reset btn", () => {
         it("Reset btn erase all inputs", () => {
             RegisterPage.completeRegister("Valid User", "validemail@gmail.com", "password01", "password01");
-            RegisterPage.btnReset.click();
+            RegisterPage.btnSubmit.click();
             browser.pause(3000);  
         });
     });
-    */
     describe("Check href url is right", () => {
         it("check if link navigates to login page", () => {
             RegisterPage.linkLogin.click();
