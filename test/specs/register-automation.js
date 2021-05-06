@@ -118,7 +118,8 @@ describe("Register automation", () =>{
     describe("Testing Reset btn", () => {
         it("Reset btn erase all inputs", () => {
             RegisterPage.completeRegister("Valid User", "validemail@gmail.com", "password01", "password01");
-            RegisterPage.btnSubmit.click();
+            RegisterPage.btnReset.click();
+            expect(RegisterPage.inputName).toHaveText("");
             browser.pause(3000);  
         });
     });
