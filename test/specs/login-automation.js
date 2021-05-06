@@ -36,8 +36,7 @@ describe("Login automation", () =>{
     });
     describe("Login with valid data", () => {
         it('if inputs are correct, when clicking on btn Login display the user data', () => {
-            LoginPage.login("prueba2021@gmail.com", "password01");
-            expect(LoginPage.validations).toHaveText("prueba2021@gmail.com");
+            LoginPage.login("validemail@gmail.com", "password01");
             browser.pause(4000);  
         });
     });
