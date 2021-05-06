@@ -81,50 +81,28 @@ describe("Register automation", () =>{
             browser.pause(2000);
         });
     });
-    /*
-    describe("Login password testing", () => {
-        it("if password input is empty show the proper mssg", () => {
-            LoginPage.inputPassword.click();
-            LoginPage.inputPassword.keys("Tab");
-            expect(LoginPage.passwordScreen).toHaveText("Doesn't match the password");
-            browser.pause(3000);  
-        });
-        it("if password is invalid show the proper mssg", () => {
-            LoginPage.setPassword("invalidpass");
-            expect(LoginPage.passwordScreen).toHaveText("Doesn't match the password");
-            browser.pause(2000);    
-        }); 
-        it("if password is valid show the proper mssg", () => {
-            LoginPage.setPassword("password01");
-            expect(LoginPage.passwordScreen).toHaveText("Correct");
-            browser.pause(2000);    
-        }); 
-    });
-    */
-    
-   /*
-    describe("Register with valid data", () => {
-        it("if inputs are correct show the proper mssg", () => {
-            RegisterPage.completeRegister("Valid User", "validemail@gmail.com", "password01", "password01");
-            browser.click($('//*[@id="submit-btn"]'));
-            expect(RegisterPage.nameScreen).toHaveText("Correct");
-            expect(RegisterPage.emailScreen).toHaveText("Correct");
-            expect(RegisterPage.passwordScreen).toHaveText("Correct");
-            expect(RegisterPage.confirmScreen).toHaveText("Correct");
-            browser.pause(3000);  
-        });
-    });
-    */
     describe("Testing Reset btn", () => {
         it("Reset btn erase all inputs", () => {
+            RegisterPage.btnSubmit.keys("Tab");
+            RegisterPage.btnReset.keys("Enter");
+            expect(RegisterPage.nameScreen).toHaveText("");
+            browser.pause(3000);  
+        });
+    });
+    describe("Testing Register btn", () => {
+        it("Register btn display user data", () => {
             RegisterPage.completeRegister("Valid User", "validemail@gmail.com", "password01", "password01");
-            RegisterPage.btnReset.click();
-            expect(RegisterPage.inputName).toHaveText("");
+            RegisterPage.btnSubmit.keys("Tab");
+            RegisterPage.btnSubmit.keys("Enter");
+            expect(RegisterPage.validations).toHaveTextContaining(["Valid User", "validemail@gmail.com",
+            "password01", "password01"]);
             browser.pause(3000);  
         });
     });
     describe("Check href url is right", () => {
         it("check if link navigates to login page", () => {
+            RegisterPage.btnSubmit.keys("Tab");
+            RegisterPage.btnSubmit.keys("Tab");
             RegisterPage.linkLogin.click();
             expect(browser).toHaveUrl("https://rodrigosibrins.github.io/challenge-09/login.html");
             expect(browser).toHaveTitle("Login");
