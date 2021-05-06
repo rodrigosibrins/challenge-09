@@ -10,7 +10,6 @@ class LoginPage {
     login (email, password) {
         this.inputEmail.setValue(email);
         this.inputPassword.setValue(password);
-        this.btnLogin.click();
     }
     setEmail (value){
         this.inputEmail.click();

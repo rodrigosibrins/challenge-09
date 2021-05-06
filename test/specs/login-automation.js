@@ -40,6 +40,7 @@ describe("Login automation", () =>{
             browser.pause(2000);    
         }); 
     });
+    /*
     describe("Login with valid data", () => {
         it("if inputs are correct show the proper mssg", () => {
             LoginPage.login("validemail@gmail.com", "password01");
@@ -50,6 +51,27 @@ describe("Login automation", () =>{
     });
     describe("Check href url is right", () => {
         it("check if link navigates to register page", () => {
+            LoginPage.linkRegister.click();
+            expect(browser).toHaveUrl("https://rodrigosibrins.github.io/challenge-09/register.html");
+            expect(browser).toHaveTitle("Register");
+            browser.pause(3000);  
+        });
+    });
+    */
+    describe("Testing Login btn", () => {
+        it("Register btn display user data", () => {
+            LoginPage.login("validemail@gmail.com", "password01");
+            LoginPage.btnLogin.keys("Tab");
+            LoginPage.btnLogin.keys("Enter");
+            expect(LoginPage.validations).toHaveTextContaining(["validemail@gmail.com",
+            "password01"]);
+            browser.pause(3000);  
+        });
+    });
+    describe("Check href url is right", () => {
+        it("check if link navigates to login page", () => {
+            LoginPage.btnLogin.keys("Tab");
+            LoginPage.btnLogin.keys("Tab");
             LoginPage.linkRegister.click();
             expect(browser).toHaveUrl("https://rodrigosibrins.github.io/challenge-09/register.html");
             expect(browser).toHaveTitle("Register");
