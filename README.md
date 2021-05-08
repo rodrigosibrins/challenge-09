@@ -1,3 +1,9 @@
+# Challenge 14
+
+**Added Automated test to the forms**
+
+To run tests = npm run test
+
 # Challenge 09 & Challenge 10
 
 **Register/Login Validations**
