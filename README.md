@@ -1,9 +1,9 @@
 # Challenge 14
 
 **Description:**
-Added automated tests to the forms with webdriverio.
-Browser to run the tests: Chrome.
-.To run tests write on console: npm run test
+- Added automated tests to the forms with webdriverio.
+- Browser to run the tests: Chrome.
+- To run tests write on console: npm run test
 
 # Challenge 09 & Challenge 10
 
